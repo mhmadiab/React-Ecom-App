@@ -4,13 +4,19 @@ import { createRoot } from 'react-dom/client'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@styles/global.css'
 
+//Customized Routing:
 import AppRouter from '@routes/AppRouter';
+
+//Redux:
+import  { Provider } from 'react-redux'
+import store from '@store/index'
+
 
 
 
 
 createRoot(document.getElementById('root')!).render(
-    <div>
+    <Provider store={store}>
         <AppRouter />
-    </div>
+    </Provider>
 )
