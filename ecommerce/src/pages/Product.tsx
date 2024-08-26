@@ -1,9 +1,11 @@
 import { Products } from "@components/ecommerce"
-import { Container, Row, Col } from "react-bootstrap"
+import { Container} from "react-bootstrap"
 import { useAppDispatch, useAppSelector } from "@store/hooks"
 import { useEffect } from "react"
 import { actGetProductsByCatPrefix , cleanUp} from "@store/products/productsSlice"
 import { useParams } from "react-router-dom"
+import Loading from "@components/feedback/index"
+import { GridList } from "@components/common"
 
 const Product = () => {
   const dispatch = useAppDispatch()
@@ -22,19 +24,14 @@ const Product = () => {
     }
   },[dispatch, param])
 
-  const producList = records.length >0 ? records.map((record)=>{
-    return (<Col xs={6} md={3} className="d-flex justify-content-center mb-5 mt-2" key={record.id}>
-              <Products {...record}/>
-           </Col>)
-  }) 
-  : "there are no categories"
+ 
 
 
   return (
     <Container>
-      <Row>
-        {producList}
-      </Row>
+    <Loading error={error} status={loading}> 
+    <GridList records={records} renderItem={(record)=> <Products {...record}/>}/>
+    </Loading>
     </Container>
   )
 }
