@@ -11,7 +11,7 @@ interface IProductState {
 
 const initialState:IProductState ={
     records: [],
-    loading: 'idle',
+    loading: "idle",
     error: null
 }
 
