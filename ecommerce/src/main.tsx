@@ -9,7 +9,10 @@ import AppRouter from '@routes/AppRouter';
 
 //Redux:
 import  { Provider } from 'react-redux'
-import store from '@store/index'
+import {store, persistor} from '@store/index'
+
+import  { PersistGate } from 'redux-persist/integration/react';
+
 
 
 
@@ -17,6 +20,8 @@ import store from '@store/index'
 
 createRoot(document.getElementById('root')!).render(
     <Provider store={store}>
-        <AppRouter />
+        <PersistGate loading={null}  persistor={persistor}>
+            <AppRouter />
+        </PersistGate>
     </Provider>
 )

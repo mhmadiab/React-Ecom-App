@@ -1,7 +1,7 @@
 import { Category} from "@components/ecommerce"
 import { Container} from "react-bootstrap"
 import { useEffect } from "react"
-import { GridList } from "@components/common"
+import { GridList, Heading } from "@components/common"
 
 //Customized Dispatch and Selector:
 import { useAppDispatch, useAppSelector } from "@store/hooks"
@@ -28,6 +28,7 @@ const Categories = () => {
 
   return (
     <Container>
+      <Heading>Categories</Heading>
       <Loading error={error} status={loading}> 
         <GridList records={records} renderItem={(record)=> <Category {...record}/>}/>
       </Loading>
