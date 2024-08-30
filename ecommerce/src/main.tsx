@@ -26,5 +26,5 @@ createRoot(document.getElementById('root')!).render(
         <PersistGate loading={null}  persistor={persistor}>
             <AppRouter />
         </PersistGate>
-    </Provider>
+     </Provider>
 )

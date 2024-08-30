@@ -11,6 +11,8 @@ import AboutUs from '@pages/AboutUs';
 import Login from '@pages/Login';
 import Register from '@pages/Register';
 import Error from '@pages/Error';
+import  Cart from '@pages/Cart';
+
 
 // const Categories = lazy(()=>import("@pages/Categories"))
 // const Product = lazy(()=>import("@pages/Product"))
@@ -61,6 +63,10 @@ const router = createBrowserRouter([
                 path:"register",
                 element:<Register />
             },
+            {
+              path:"cart",
+              element:<Cart/>
+            }
 
 
         ]
