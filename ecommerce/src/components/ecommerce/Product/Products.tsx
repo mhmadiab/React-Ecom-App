@@ -50,7 +50,7 @@ const Product = ({id,title,price,img, max, quantity}:TProduct) => {
         />
       </div>
       <h2>{title}</h2>
-      <h3>{price} LBP</h3>
+      <h3>{price.toFixed(2)} LBP</h3>
       <p className={maximumNotice}>{quantityReachedToMax ? "You reached maximum amount." : `Remaining: ${currentRemainingQuantity}`}</p>
       <Button 
             variant="info" 

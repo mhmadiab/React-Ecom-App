@@ -7,6 +7,9 @@ import '@styles/global.css'
 //Customized Routing:
 import AppRouter from '@routes/AppRouter';
 
+//Axios Config:
+import  './services/axios-global'
+
 //Redux:
 import  { Provider } from 'react-redux'
 import {store, persistor} from '@store/index'
