@@ -1,7 +1,7 @@
 import { Heading } from "@components/common"
 import { CartItemList, CartSubTotalPrice} from "@components/ecommerce/index"
 import { useCallback, useEffect } from "react"
-import { actGetProductsByItems, cartItemChangeQuantity , removeItem} from "@store/cart/cartSlice"
+import { actGetProductsByItems, cartItemChangeQuantity , removeItem, cartCleanUp} from "@store/cart/cartSlice"
 import { useAppDispatch, useAppSelector } from "@store/hooks"
 import Loading from "@components/feedback"
 
@@ -14,6 +14,9 @@ const Cart = () => {
     
     useEffect(()=>{
        dispatch(actGetProductsByItems())
+       return ()=> {
+        dispatch(cartCleanUp())
+       }
     }, [dispatch])
 
     const product = productFullInfo.map((el)=> ({...el, 
