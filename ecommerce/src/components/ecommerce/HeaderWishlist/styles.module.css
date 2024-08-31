@@ -3,6 +3,9 @@
     align-self: flex-end;
     display: flex;
     align-items: center;
+    border-right: 1px solid black;
+    padding-right: 10px;
+    margin-right: 10px;
 }
 
 .totalNUm{

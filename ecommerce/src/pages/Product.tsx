@@ -8,18 +8,22 @@ import Loading from "@components/feedback/index"
 import { GridList, Heading } from "@components/common"
 
 
+
 const Product = () => {
   const dispatch = useAppDispatch()
   const param = useParams()
  
   const {records, error, loading} = useAppSelector((state)=> state.products)
-
+  
   const cartItems = useAppSelector((state)=> state.carts.items)
+  const wishlistItems = useAppSelector((state)=> state.wishlists.itemId)
 
   const ProductsFullInfo = records.map((el)=>{
     return {
       ...el,
-      quantity: cartItems[el.id] || 0
+      quantity: cartItems[el.id] || 0, 
+      isLiked:  wishlistItems.includes(el.id)
+
     }
   })
 

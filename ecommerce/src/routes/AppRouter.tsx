@@ -12,7 +12,7 @@ import Login from '@pages/Login';
 import Register from '@pages/Register';
 import Error from '@pages/Error';
 import  Cart from '@pages/Cart';
-
+import Wishlists from '@pages/Wishlists';
 
 // const Categories = lazy(()=>import("@pages/Categories"))
 // const Product = lazy(()=>import("@pages/Product"))
@@ -66,6 +66,10 @@ const router = createBrowserRouter([
             {
               path:"cart",
               element:<Cart/>
+            },
+            {
+               path:"wishlist",
+               element: <Wishlists />
             }
 
 
