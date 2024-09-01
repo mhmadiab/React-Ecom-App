@@ -1,16 +1,18 @@
 import styles from './styles.module.css'
-import Logo from '@assets/svg/wishlist.svg?react'
-import { useAppSelector } from '@store/hooks'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const {Container, totalNUm, pumpAnimate, iconWrapper}=styles
 
-const HeaderWishlist = () => {
+type HeaderCounterProps = {
+  Totalquantity : number,
+  svgIcon : React.ReactNode, 
+  page: string, 
+  title : string
+}
 
+const HeaderCounter = ({Totalquantity, svgIcon, page, title}:HeaderCounterProps ) => {
 
-
-  const Totalquantity = useAppSelector((state)=> state.wishlists.itemId)
   const [isAnimate, setIsAnimate] = useState(false) 
   const quantityStyle = `${totalNUm} ${isAnimate ? pumpAnimate : "" }`
 
@@ -32,14 +34,14 @@ const HeaderWishlist = () => {
   [Totalquantity])
 
   return (
-    <div className={Container} onClick={()=> navigate("wishlist")}>
+    <div className={Container} onClick={()=> navigate(`${page}`)}>
         <div className={iconWrapper}>
-          <Logo />
-          {Totalquantity.length > 0 ? <div className={quantityStyle}>{Totalquantity.length}</div> : null}
+          {svgIcon}
+          {Totalquantity > 0 ? <div className={quantityStyle}>{Totalquantity}</div> : null}
         </div>
-        <h3>Wishlist</h3>
+        <h3>{title}</h3>
     </div>
   )
 }
 
-export default HeaderWishlist
+export default HeaderCounter

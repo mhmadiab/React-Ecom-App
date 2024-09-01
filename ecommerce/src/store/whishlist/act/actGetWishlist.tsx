@@ -1,27 +1,25 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { TProduct } from "@customeypes/product";
-
+import isAxiosErrorHandler from "@util/isAxiosErrorHandler";
 
 type TResponse = TProduct[]
 
 
 const actGetWishlist = createAsyncThunk("wishlist/actGetWishlist", async(_,thunkAPI)=>{
-    const {rejectWithValue, fulfillWithValue} = thunkAPI
+    const {rejectWithValue, fulfillWithValue, signal} = thunkAPI
      try {
         const userWishlist = await axios.get<{productId : number} []>('/wishlist?userId=1')
         if(!userWishlist.data.length ){
             return fulfillWithValue([])
         }
         const concatendatedItemsId = userWishlist.data.map((el)=> `id=${el.productId}`).join('&') 
-        const response =  await axios.get<TResponse>(`/products?${concatendatedItemsId}`)
+        const response =  await axios.get<TResponse>(`/products?${concatendatedItemsId}`, {
+         signal
+        })
         return response.data
      } catch (error) {
-        if(axios.isAxiosError(error)){
-            return rejectWithValue(error.response?.data.message || error.message)
-        }else 
-           return rejectWithValue("can't perform the action")
-
+        return rejectWithValue(isAxiosErrorHandler(error));
      }
 
 })

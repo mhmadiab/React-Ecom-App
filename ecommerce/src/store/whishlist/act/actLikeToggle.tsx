@@ -1,6 +1,7 @@
 // import { TWhishlist } from "@customeypes/whishlist";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import isAxiosErrorHandler from "@util/isAxiosErrorHandler";
 
 // type TResponse = TWhishlist
 
@@ -19,10 +20,7 @@ const actLikeToggle = createAsyncThunk("wishlist", async(id: number,thunkAPI)=>{
         }
         
      } catch (error) {
-        if(axios.isAxiosError(error)){
-            return rejectWithValue(error.response?.data.message || error.message)
-        }else 
-           return rejectWithValue("can't perform the action")
+        return rejectWithValue(isAxiosErrorHandler(error));
 
      }
 })
