@@ -6,7 +6,7 @@ const {footerContainer } = styles
 const Footer = () => {
   return (
     <div className={footerContainer}>
-        20234 Our Ecom. All rights reserved.
+        2024 Our Ecom. All rights reserved.
     </div>
   )
 }
