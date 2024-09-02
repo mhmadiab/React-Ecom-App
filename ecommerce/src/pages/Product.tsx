@@ -13,8 +13,8 @@ const Product = () => {
   return (
     <Container>
       <Heading title={`${param.prefix?.toUpperCase()}'s Products`}/>
-      <Loading error={error} status={loading}> 
-        <GridList records={ProductsFullInfo} renderItem={(record)=> <Products {...record} />}/>
+      <Loading error={error} status={loading} type="product"> 
+        <GridList message="there are no products" records={ProductsFullInfo} renderItem={(record)=> <Products {...record} />}/>
       </Loading>
     </Container>
   )
