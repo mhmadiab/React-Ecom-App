@@ -20,6 +20,7 @@ export default defineConfig({
             "@layouts": path.resolve(__dirname, "./src/layouts"),
             "@routes": path.resolve(__dirname, "./src/routes"),
             "@util": path.resolve(__dirname, "./src/util"),
+            "@validations": path.resolve(__dirname, "src/validations")
     }
   },
   plugins: [react(), svgr()],
