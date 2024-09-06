@@ -4,6 +4,8 @@ import { NavLink } from 'react-router-dom'
 import HeaderLeftBar from './headerLeftBar/HeaderLeftBar'
 import { useAppSelector, useAppDispatch } from '@store/hooks'
 import { authLogout } from '@store/auth/authSlice'
+import { useEffect } from 'react'
+import { actGetWishlist } from '@store/whishlist/wishlistSlice'
 
 const {headerLogo, headerContainer }=styles
 const Header = () => {
@@ -15,6 +17,12 @@ const Header = () => {
   const logoutHandler = ()=>{
     dispatch(authLogout())
   }
+
+  useEffect(()=>{
+    if(accessToken){
+      dispatch(actGetWishlist("productsIds"))
+    }
+  }, [dispatch, accessToken])
   
 
   return (

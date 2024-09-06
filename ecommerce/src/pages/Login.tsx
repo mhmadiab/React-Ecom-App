@@ -1,61 +1,15 @@
 import {Button, Row, Col, Alert, Spinner} from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import { Heading } from '@components/common';
-import { useAppDispatch, useAppSelector} from '@store/hooks';
-import { actAuthLogin, resetUI } from '@store/auth/authSlice';
-import { useEffect } from 'react';
-
-//form and Login Components
+import useLogin from '@hooks/useLogin';
+import { Navigate } from 'react-router-dom';
 import { Input } from '@components/forms';
-import {useForm, SubmitHandler} from 'react-hook-form'
-import { signinSchema, type signinType  } from '@validations/signinSchema';
-import { zodResolver } from '@hookform/resolvers/zod';
-
-//authentication and validation
-import { useSearchParams, useNavigate, Navigate } from 'react-router-dom';
-
-
 
 const Login = () => {
-
-  const navigate = useNavigate()
-
-  const dispatch = useAppDispatch()
-
-  const {loading, error, accessToken} = useAppSelector((state)=> state.auths)
-  
-
-
-  const [searchParams, setSearchParams] = useSearchParams()
-
-  const {register,  handleSubmit, formState: {errors}} = useForm<signinType>({
-    resolver: zodResolver(signinSchema),
-    mode: "onBlur",
-  })
-
-  const loginHandler:SubmitHandler<signinType>  =(data)=>{
-    if(searchParams.get("message")){
-      setSearchParams("")
-    }
-       dispatch(actAuthLogin(data))
-       .unwrap()
-       .then(()=>{
-        navigate('/')
-       })
-  }
-
-  useEffect(()=>{
-
-    return ()=>{
-      dispatch(resetUI())
-    }
-
-  }, [dispatch])
-
+  const {loading, error, accessToken,searchParams,errors, register,  handleSubmit, loginHandler } = useLogin()
   if(accessToken){
     return <Navigate to="/" />
   }
-
   return (
     <>
     <Heading title='User Login' />
