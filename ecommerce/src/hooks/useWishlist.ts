@@ -12,14 +12,15 @@ const useWishlist = () => {
         return {
           ...el,
           quantity: cartItems[el.id] || 0, 
-          isLiked:  true
+          isLiked:  true,
+          isAuthenticated: true
     
         }
       })
     
 
     useEffect(()=>{
-       const promise = dispatch(actGetWishlist());
+       const promise = dispatch(actGetWishlist("productsFullInfo"));
        
        return ()=> {
         promise.abort()

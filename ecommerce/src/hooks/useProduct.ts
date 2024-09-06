@@ -11,12 +11,15 @@ const useProduct = () => {
     
     const cartItems = useAppSelector((state)=> state.carts.items)
     const wishlistItems = useAppSelector((state)=> state.wishlists.itemId)
+    const userAccessToke =  useAppSelector((state)=> state.auths.accessToken)
+
   
     const ProductsFullInfo = records.map((el)=>{
       return {
         ...el,
         quantity: cartItems[el.id] || 0, 
-        isLiked:  wishlistItems.includes(el.id)
+        isLiked:  wishlistItems.includes(el.id),
+        isAuthenticated: userAccessToke ? true : false
   
       }
     })
