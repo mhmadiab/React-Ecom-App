@@ -2,6 +2,8 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 
+//protect route
+import ProtectedRoute from '@components/Auth/ProtectedRoute';
 
 //pages:
 import Home from '@pages/Home';
@@ -22,6 +24,7 @@ const Cart = lazy(()=>import("@pages/Cart"))
 const Wishlists = lazy(()=>import("@pages/Wishlists"))
 const Login = lazy(()=>import("@pages/Login"))
 const Register = lazy(()=>import("@pages/Register"))
+const Profile = lazy(()=> import("@pages/Profile"))
 
 
 //layouts:
@@ -96,9 +99,19 @@ const router = createBrowserRouter([
             },
             {
                path:"wishlist",
-               element: <Suspense fallback={<LottieHandler type="loading" message='Please wait' />}>
-                              <Wishlists />
+               element: <ProtectedRoute>
+                          <Suspense fallback={<LottieHandler type="loading" message='Please wait' />}>
+                                        <Wishlists />
                           </Suspense>,
+                        </ProtectedRoute>
+            },
+            {
+              path:"profile", 
+              element: <ProtectedRoute>
+                          <Suspense fallback={<LottieHandler type='loading' message='Please wait'></LottieHandler>}>
+                                    <Profile />
+                          </Suspense>
+                        </ProtectedRoute>
             }
 
 

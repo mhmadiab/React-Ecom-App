@@ -109,7 +109,34 @@
       "id": 2
     }
   ],
-  "users":[{
-    "email": "mhmad@gmail.com"
-  }]
+  "users": [
+    {
+      "email": "mhmadiab17@gmail.com",
+      "password": "$2a$10$Te75c7sPOE8zk0ULiVgHn.wLQQeTI7/iM.28OACO2qeBr5/Ya2VZe",
+      "firstName": "mhmad",
+      "lastName": "diab",
+      "id": 1
+    },
+    {
+      "email": "reemdiab23@hotmail.com",
+      "password": "$2a$10$c5FJ2AdvLPj0txHLTjGM9OTQgwag15Bd43eY3R71Y/K9xg3kwFz3.",
+      "firstName": "reem",
+      "lastName": "diab",
+      "id": 2
+    },
+    {
+      "email": "ahmdJamal@gmail.com",
+      "password": "$2a$10$iT.IKzt7ifE7ieVpUaVy4eMLJ5DJ0VW2gOwbvWJWeUpLHz.YJFaNG",
+      "firstName": "ahmd",
+      "lastName": "jamal",
+      "id": 3
+    },
+    {
+      "email": "jawadKhalil@gmail.com",
+      "password": "$2a$10$a5N6bZPnFiAJW9S/FZF4eObBFtlase4ts2Xl5Z9ASo/aODahLay9m",
+      "firstName": "jawad",
+      "lastName": "khalil",
+      "id": 4
+    }
+  ]
 }
