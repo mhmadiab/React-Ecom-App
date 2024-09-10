@@ -7,9 +7,9 @@ import { addToCart } from "@store/cart/cartSlice";
 import { useEffect, useState , memo} from "react";
 import Like from '@assets/svg/like.svg?react'
 import LikeFill from '@assets/svg/like-fill.svg?react'
+import ProductInfo from "../ProductInfo/ProductInfo";
 
-
-const { product, productImg, maximumNotice, wishlist } = styles;
+const {   maximumNotice, wishlist } = styles;
 
 const Product = ({id,title,price,img, max, quantity, isLiked, isAuthenticated}:TProduct) => {
 
@@ -69,7 +69,7 @@ const Product = ({id,title,price,img, max, quantity, isLiked, isAuthenticated}:T
           </Modal.Body>
         </Modal>
 
-        <div className={product}>
+        <ProductInfo title={title} price={price} img={img}>
           <div className={wishlist} onClick={LikeToggleHandler}>
             {isLoading ? (
               <Spinner animation="border" size="sm" variant="primary" />
@@ -79,11 +79,6 @@ const Product = ({id,title,price,img, max, quantity, isLiked, isAuthenticated}:T
               <Like />
             )}
           </div>
-          <div className={productImg}>
-            <img src={img} alt={title} />
-          </div>
-          <h2>{title}</h2>
-          <h3>{price.toFixed(2)} EGP</h3>
           <p className={maximumNotice}>
             {quantityReachedToMax
               ? "You reached to the limit"
@@ -91,7 +86,7 @@ const Product = ({id,title,price,img, max, quantity, isLiked, isAuthenticated}:T
           </p>
           <Button
             variant="info"
-            style={{ color: "white" }}
+            style={{ color: "white" , width: "100%" }}
             onClick={addToCartHandler}
             disabled={isBtnDisabeled || quantityReachedToMax}
           >
@@ -103,7 +98,7 @@ const Product = ({id,title,price,img, max, quantity, isLiked, isAuthenticated}:T
               "Add to cart"
             )}
           </Button>
-        </div>
+        </ProductInfo>
       </>
   );
 };

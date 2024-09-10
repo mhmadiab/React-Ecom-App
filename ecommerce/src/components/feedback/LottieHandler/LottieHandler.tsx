@@ -3,11 +3,14 @@ import notFound from '@assets/LottieFiles/Error404Animation.json'
 import empty from '@assets/LottieFiles/EmptyCartAnimation.json'
 import loading from '@assets/LottieFiles/LoadingAnimation.json'
 import networkError from '@assets/LottieFiles/networkErrorAnimation.json'
+import success from '@assets/LottieFiles/success.json'
+
 const lottieFilesMap = {
     notFound,
     empty,
     loading,
     networkError,
+    success
 }
 
 type TLottieHandlerProps = {
