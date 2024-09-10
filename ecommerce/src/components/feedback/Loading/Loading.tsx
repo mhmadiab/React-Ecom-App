@@ -4,14 +4,15 @@ import { TLoading } from "@customeypes/shared"
 import CategorySkeleton from "../Skeletons/CategorySkeleton/CategorySkeleton"
 import  ProductSkeleton from "../Skeletons/ProductSkeleton/ProductSkeleton"
 import CartSkeleton from "../Skeletons/CartSkeleton/CartSkeleton"
-
+import TableSkeleton from "../Skeletons/TableSkeleton/TableSkeleton"
 //lottieHandler:
 import LottieHandler from "../LottieHandler/LottieHandler"
 
 const skeletonTypes  = {
     category : CategorySkeleton,
     product : ProductSkeleton,
-    cart : CartSkeleton
+    cart : CartSkeleton,
+    table: TableSkeleton
 }
 
 interface ILoadingProps {

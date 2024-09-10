@@ -42,8 +42,8 @@ const Header = () => {
                     <Nav.Link as={NavLink} to="aboutus">About</Nav.Link>
                 </Nav>
                 {accessToken ?  <><NavDropdown title={`Welcome: ${user?.firstName} ${user?.lastName}`} id="basic-nav-dropdown" style={{color : "white"}}>
-                                  <NavDropdown.Item as ={NavLink} to="/profile">Profile</NavDropdown.Item>
-                                  <NavDropdown.Item as ={NavLink} to="/orders">Orders</NavDropdown.Item>
+                                  <NavDropdown.Item as ={NavLink} to="/profile" end>Profile</NavDropdown.Item>
+                                  <NavDropdown.Item as ={NavLink} to="profile/orders">Orders</NavDropdown.Item>
                                   <NavDropdown.Divider />
                                   <NavDropdown.Item as ={NavLink} to="/" onClick={logoutHandler}>Logout</NavDropdown.Item>
                                 </NavDropdown>

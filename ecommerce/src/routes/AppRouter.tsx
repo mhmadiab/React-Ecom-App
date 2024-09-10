@@ -24,15 +24,16 @@ const Cart = lazy(()=>import("@pages/Cart"))
 const Wishlists = lazy(()=>import("@pages/Wishlists"))
 const Login = lazy(()=>import("@pages/Login"))
 const Register = lazy(()=>import("@pages/Register"))
-const Profile = lazy(()=> import("@pages/Profile"))
-
+const Account = lazy(()=> import("@pages/Account"))
+const Orders = lazy(()=> import("@pages/Orders"))
 
 //layouts:
 const MainLayout = lazy(()=> import("@layouts/MainLayout/MainLayout"))
-
+const ProfileLayout = lazy(()=> import("@layouts/ProfileLayout/ProfileLayout"))
 
 //LottieHandler:
 import LottieHandler from '@components/feedback/LottieHandler/LottieHandler';
+
 
 
 
@@ -41,8 +42,7 @@ const router = createBrowserRouter([
     {
         path:"/",
         element:<Suspense fallback={<div style={{ marginTop: "10%" }}>
-        <LottieHandler type="loading" message="Loading please wait..." />
-      </div>}>
+                              <LottieHandler type="loading" message="Loading please wait..." /></div>}>
                     <MainLayout />
                 </Suspense>,
         errorElement: <Error />,
@@ -107,11 +107,20 @@ const router = createBrowserRouter([
             },
             {
               path:"profile", 
-              element: <ProtectedRoute>
+              element: (<ProtectedRoute>
                           <Suspense fallback={<LottieHandler type='loading' message='Please wait'></LottieHandler>}>
-                                    <Profile />
+                                    <ProfileLayout />
                           </Suspense>
-                        </ProtectedRoute>
+                        </ProtectedRoute>),
+              children : [
+                {index: true , element: (<Suspense fallback={<LottieHandler type='loading' message='Please wait'></LottieHandler>}>
+                                          <Account />
+                                        </Suspense>)},
+                {path: "orders" , element: (<Suspense fallback={<LottieHandler type='loading' message='Please wait'></LottieHandler>}>
+                  <Orders />
+                </Suspense>)},
+
+              ]
             }
 
 
