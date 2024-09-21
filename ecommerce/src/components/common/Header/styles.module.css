@@ -5,6 +5,15 @@
     align-items: center;
 }
 
+.navlinkItems{
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: 500;
+    font-size: 1.1rem;
+    letter-spacing: .1rem;
+}
+.nav-link.active{
+    background: #000;
+}
 .headerLogo{
     color: inherit;
     text-decoration: inherit;
@@ -22,6 +31,7 @@
     margin-right:5px ;
 }
 
+
 .headerLeftBar{
     display: flex;
     flex-direction: row;
@@ -33,3 +43,7 @@
    border-right: 1px solid black;
 
 }
+
+
+
+    
