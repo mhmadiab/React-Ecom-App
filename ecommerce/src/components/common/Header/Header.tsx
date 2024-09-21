@@ -7,7 +7,9 @@ import { authLogout } from '@store/auth/authSlice'
 import { useEffect } from 'react'
 import { actGetWishlist } from '@store/whishlist/wishlistSlice'
 
-const {headerLogo, headerContainer }=styles
+import logo from '@assets/png/8eaaac3a2fe79ea70f852b5c332c7efb.png'
+
+const {headerLogo, headerContainer, navlinkItems }=styles
 const Header = () => {
 
   const dispatch = useAppDispatch()
@@ -28,18 +30,17 @@ const Header = () => {
   return (
     <header>
         <div className={headerContainer}>
-          <h1 className={headerLogo}><span>our </span><Badge bg='info'>eCom</Badge></h1>
+          <h1 className={headerLogo}><span><img src={logo} style={{width: "45px", marginRight: 10}}></img></span><Badge bg='info'> eCom</Badge></h1>
           <HeaderLeftBar />
         </div>
-        <Navbar expand="lg" className="bg-body-tertiary" bg='dark' data-bs-theme="dark">
+        <Navbar expand="lg" className="bg-body-tertiary bg-black" bg="dark" data-bs-theme="dark" >
             <Container>
-                
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
-                    <Nav.Link as={NavLink} to="/">Home</Nav.Link>
-                    <Nav.Link as={NavLink} to="categories">Categories</Nav.Link>
-                    <Nav.Link as={NavLink} to="aboutus">About</Nav.Link>
+                    <Nav.Link as={NavLink} to="/" className={navlinkItems}>Home</Nav.Link>
+                    <Nav.Link as={NavLink} to="categories" className={navlinkItems}>Categories</Nav.Link>
+                    <Nav.Link as={NavLink} to="aboutus" className={navlinkItems}>About</Nav.Link>
                 </Nav>
                 {accessToken ?  <><NavDropdown title={`Welcome: ${user?.firstName} ${user?.lastName}`} id="basic-nav-dropdown" style={{color : "white"}}>
                                   <NavDropdown.Item as ={NavLink} to="/profile" end>Profile</NavDropdown.Item>
@@ -51,8 +52,8 @@ const Header = () => {
                 : 
                 <>
                 <Nav >
-                    <Nav.Link as={NavLink} to="login">Login</Nav.Link>
-                    <Nav.Link as={NavLink} to="register">Register</Nav.Link>
+                    <Nav.Link as={NavLink} to="login" className={navlinkItems}>Login</Nav.Link>
+                    <Nav.Link as={NavLink} to="register" className={navlinkItems}>Register</Nav.Link>
                   </Nav>
                   </>
                 }
