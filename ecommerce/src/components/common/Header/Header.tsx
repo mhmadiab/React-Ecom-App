@@ -33,7 +33,7 @@ const Header = () => {
           <h1 className={headerLogo}><span><img src={logo} style={{width: "45px", marginRight: 10}}></img></span><Badge bg='info'> eCom</Badge></h1>
           <HeaderLeftBar />
         </div>
-        <Navbar expand="lg" className="bg-body-tertiary"  >
+        <Navbar expand="lg" className="bg-body-tertiary bg-black" bg="dark" data-bs-theme="dark" >
             <Container>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
